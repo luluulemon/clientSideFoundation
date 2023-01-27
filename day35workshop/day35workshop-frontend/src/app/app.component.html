@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" class="toolbar">
+  <span>Game Retriever</span>
+
+  <form [formGroup]="form">
+      <mat-form-field id="numField">
+          <mat-label>Select</mat-label>
+          <mat-select formControlName="noOfRec" (selectionChange)="getNum()">
+            <mat-option *ngFor="let num of recSizeOption"  [value]="num">{{num}}</mat-option>
+          </mat-select>
+
+      </mat-form-field>
+      
+      <!-- <select formControlName="noOfRec" (change)="getNum()">
+        <option *ngFor="let num of recSizeOption"  [value]="num">{{num}}</option>
+      </select> -->
+      
+  </form>
+</mat-toolbar>
+
+
+<app-gamelist [viewPerPage]="viewPerPage" ></app-gamelist>
+

@@ -1,0 +1,11 @@
+<mat-list role="list">
+    <mat-list-item role="listitem" *ngFor="let g of games">{{g.name}}</mat-list-item>
+</mat-list>
+
+<div class="listbuttons">
+    <button *ngIf="offset > 0" mat-raised-button color="primary" (click)="previous()">PREVIOUS</button>
+    &nbsp;
+    
+    <button mat-raised-button color="primary" (click)="next()">NEXT</button>
+    
+</div>
