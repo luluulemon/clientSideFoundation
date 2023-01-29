@@ -1,0 +1,6 @@
+<h2>Another Shopping Cart</h2>
+
+<div class="side-by-side">
+  <app-inventory (onAddHero)="addHero($event)" (onReduceHero)="reduceHero($event)"></app-inventory>
+  <app-cart [heroInCart]="counts"></app-cart>
+</div>

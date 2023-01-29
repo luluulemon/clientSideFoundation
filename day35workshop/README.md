@@ -1,3 +1,10 @@
+Day 35
+- add on endpoint for angular
+    1. /games-ng, with optional query params
+        List games with name and GID
+    **run server, then run front end (frontend folder) -> ng serve
+
+
 Day 26
 - Boardgames database on localhost, with games and comments collections
     Endpoints (REST):
@@ -7,3 +14,4 @@ Day 26
         List games by ranking (ascending)
     3. /game/{gid}
         List details of game with gid
+

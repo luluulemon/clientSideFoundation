@@ -10,6 +10,7 @@ export class GameService {
 
   constructor(private httpClient:HttpClient) { }
   URL = "http://localhost:8080/games-ng"
+  URL_public = "https://abstracted-weight-production.up.railway.app/games-ng"
 
   getGames(limit: number, offset:number): Observable<Game[]>{
     const params = new HttpParams().set("limit", limit).set("offset", offset);
@@ -19,7 +20,7 @@ export class GameService {
     .set('Access-Control-Allow-Origin', '*');
 
     //return this.httpClient.get<Game[]>(this.URL, { params: params, headers:headers })
-    return this.httpClient.get<Game[]>(this.URL, { params: params,  })
+    return this.httpClient.get<Game[]>(this.URL_public, { params: params,  })
   }
 
 }

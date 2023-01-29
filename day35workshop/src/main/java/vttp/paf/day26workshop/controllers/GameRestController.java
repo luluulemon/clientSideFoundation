@@ -42,9 +42,10 @@ public class GameRestController {
     (@RequestParam(required = false) Integer limit, @RequestParam(required=false) Integer offset)
     {   
         // params are 0 if nothing is entered. Use default limit as 10
-        if(limit == 0)
+        if(limit == null || limit==0)
         {   limit = 10;   }
-
+        if(offset == null)
+        {   offset = 0; }
 
         JsonArray resp = gameRepo.getGame(limit, offset, "ng");
 

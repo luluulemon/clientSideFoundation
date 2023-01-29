@@ -1,0 +1,9 @@
+<h2>Shopping Cart</h2>
+
+<div style="border: solid black 1px">
+    <div *ngFor="let heroCount of heroInCart" >
+        <div *ngIf="heroCount.count !=0">
+            <h3>{{heroCount.name}} : {{heroCount.count}} </h3>
+        </div>
+    </div>
+</div>

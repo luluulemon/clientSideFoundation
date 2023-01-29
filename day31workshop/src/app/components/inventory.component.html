@@ -1,0 +1,8 @@
+<h2>Hero Inventory</h2>
+
+<div *ngFor="let hero of heroes" style="border:solid black 1px" >
+    <span><img src="{{hero.image}}" alt="" class="heroes"></span>
+    <span>{{hero.name}}</span>
+    <button type="button" (click)="addTo(hero.name)">+</button>
+    <button type="button" (click)="reduceFrom(hero.name)">-</button>
+</div>
