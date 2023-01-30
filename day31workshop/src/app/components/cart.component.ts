@@ -9,6 +9,7 @@ import { heroCount } from '../Hero';
 export class CartComponent {
 
   @Input() heroInCart!: heroCount[]
+  @Input() totalCount!: number
 
-  
+
 }

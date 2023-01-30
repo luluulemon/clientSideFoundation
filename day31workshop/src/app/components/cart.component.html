@@ -1,6 +1,10 @@
 <h2>Shopping Cart</h2>
 
-<div style="border: solid black 1px">
+<div *ngIf="totalCount == 0" style="border: solid red 2px">
+    <h3>**Empty Cart**</h3>
+</div>
+
+<div style="border: solid black 1px" *ngIf="totalCount>0">
     <div *ngFor="let heroCount of heroInCart" >
         <div *ngIf="heroCount.count !=0">
             <h3>{{heroCount.name}} : {{heroCount.count}} </h3>

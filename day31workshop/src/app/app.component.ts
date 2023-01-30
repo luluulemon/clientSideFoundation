@@ -13,11 +13,13 @@ export class AppComponent {
                           { name:'flash', count: 0},
                           { name: 'wonderwoman', count: 0},
                           { name: 'spiderman', count: 0 } ]
+  totalCount: number = 0
 
   addHero(name: string){ 
     const heroIndex = this.counts.findIndex( Hero => Hero.name == name)
     console.info("check index ", heroIndex)
     this.counts[heroIndex].count++
+    this.totalCount++
     console.info(this.counts[heroIndex]) // = { name: name, count: 1 }
   }
 
@@ -25,7 +27,8 @@ export class AppComponent {
     const heroIndex = this.counts.findIndex( Hero => Hero.name == name)
     console.info("check index ", heroIndex)
     if(this.counts[heroIndex].count > 0)
-    { this.counts[heroIndex].count-- }
+    { this.counts[heroIndex].count-- 
+      this.totalCount--             }
     console.info(this.counts[heroIndex])
   }
 }

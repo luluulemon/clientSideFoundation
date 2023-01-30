@@ -2,5 +2,5 @@
 
 <div class="side-by-side">
   <app-inventory (onAddHero)="addHero($event)" (onReduceHero)="reduceHero($event)"></app-inventory>
-  <app-cart [heroInCart]="counts"></app-cart>
+  <app-cart [heroInCart]="counts" [totalCount]="totalCount"></app-cart>
 </div>
