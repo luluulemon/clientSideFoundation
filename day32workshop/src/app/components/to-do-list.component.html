@@ -1,0 +1,18 @@
+<div style="border: solid 1px black; width: 20em;" >
+ 
+ <h2 style="color: orange">TASKS</h2>
+
+        <div *ngFor="let task of TasksList; let i = index" class="main-task">
+            <h3>{{ task.description }}</h3>
+            <div class="task-bottom">
+                <span>{{ task.priority }} </span>
+                <span> {{ task.dueDate }} </span>
+            </div>
+            <div>
+                <button type="button">EDIT</button>
+                <button type="button">COMPLETE</button>
+                <button type="button" (click)="deleteTask(i)">DELETE</button>
+            </div>
+        </div>
+
+</div>

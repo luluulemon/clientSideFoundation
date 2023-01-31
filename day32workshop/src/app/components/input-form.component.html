@@ -1,0 +1,29 @@
+
+
+<form [formGroup]="form" (ngSubmit)="addTask()">
+    <table>
+        <tr>
+            <td>Description:</td>
+            <td><input type="text" formControlName="description"></td>
+        </tr>
+        <tr>
+            <td>Priority</td>
+            <td><input type="radio" formControlName="priority" name="priority" value="low" id="low">
+                <label for="low">low</label><br>
+                <input type="radio" formControlName="priority" name="priority"  value="medium" id="medium">
+                <label for="medium">medium</label>
+                <input type="radio" formControlName="priority" name="priority"  value="high" id="high">
+                <label for="high">high</label>
+            </td>
+        </tr>
+        <tr>
+            <td>Due Date:</td>
+            <td><input type="date" formControlName="dueDate" [min]="todayDate"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><button type="submit" [disabled]="form.invalid">ADD</button></td>
+        </tr>
+    </table>
+
+</form>
