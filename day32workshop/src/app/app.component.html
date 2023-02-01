@@ -1,5 +1,28 @@
 <h1 style="color: orange;">ToDo</h1>
 <br>
-<app-input-form (onAddTask)="addTask($event)"></app-input-form>
-<br>
-<app-to-do-list [TasksList]="Tasks" (onDeleteTask)="deleteTask($event)"></app-to-do-list>
+<div class="mainPage">
+  <app-input-form (onAddTask)="addTask($event)"></app-input-form>
+  <br>
+  <app-to-do-list [TasksList]="Tasks" [editIndex]="edits" 
+                  (onDeleteTask)="deleteTask($event)"
+                  (onEdit)="editTask($event)"
+                  (onCancelEdit)="cancelEdit($event)"
+                  (onSaveEdit)="saveEdit($event)"
+                  (onCompleteTask)="completeTask($event)"></app-to-do-list>
+
+  <br>
+
+  <div style="border: solid black 1px">
+    <h2 style="color: orange;">Completed Tasks</h2>
+    <br>
+    <div *ngIf="completedTasks.length == 0">
+      <h3>No tasks completed</h3>
+    </div>
+
+    <div *ngIf="completedTasks.length >0">
+      <div *ngFor="let task of completedTasks" >
+        <span> {{task.description}}, {{ task.priority }}, {{ task.dueDate}} </span>
+      </div>
+    </div>
+  </div>
+</div>

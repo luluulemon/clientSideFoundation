@@ -1,18 +1,30 @@
-<div style="border: solid 1px black; width: 20em;" >
+<div style="border: solid 1px black;" >
  
  <h2 style="color: orange">TASKS</h2>
 
         <div *ngFor="let task of TasksList; let i = index" class="main-task">
             <h3>{{ task.description }}</h3>
-            <div class="task-bottom">
-                <span>{{ task.priority }} </span>
-                <span> {{ task.dueDate }} </span>
+            <div  *ngIf="editIndex[i] == false">
+                <div class="task-bottom">
+                    <span>{{ task.priority }} </span>
+                    <span> {{ task.dueDate }} </span>
+                </div>
+                <div>
+                    <button type="button" (click)="editTask(i)">EDIT</button>
+                    <button type="button" (click)="completeTask(i)">COMPLETE</button>
+                    <button type="button" (click)="deleteTask(i)">DELETE</button>
+                </div>
             </div>
-            <div>
-                <button type="button">EDIT</button>
-                <button type="button">COMPLETE</button>
-                <button type="button" (click)="deleteTask(i)">DELETE</button>
+            <div class="task-bottom" *ngIf="editIndex[i] == true">
+                <form [formGroup]="form" >
+                    <input type="text" value="{{ task.description }}" formControlName="description">
+                    <input type="text" [value]="task.priority" placeholder="{{ task.priority}}" formControlName="priority">
+                    <input type="date" placeholder="{{ task.dueDate }}" formControlName="dueDate" >
+                    <button type="button" (click)="processEdit(i)">SAVE</button>
+                    <button type="button" (click)="cancelEdit(i)">CANCEL</button>
+                </form>
             </div>
+
         </div>
 
 </div>
