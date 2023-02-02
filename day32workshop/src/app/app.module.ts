@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { ToDoListComponent } from './components/to-do-list.component';
 import { InputFormComponent } from './components/input-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ReactiveFormsModule } from '@angular/forms';
   ],
   imports: [
     BrowserModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

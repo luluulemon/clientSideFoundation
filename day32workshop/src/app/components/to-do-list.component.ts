@@ -12,6 +12,7 @@ export class ToDoListComponent {
 
   form!: FormGroup 
   constructor(private fb: FormBuilder){}
+  todayDate: Date = new Date
 
 
   @Input() TasksList!: Task[]

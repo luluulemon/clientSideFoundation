@@ -50,6 +50,8 @@ export class AppComponent {
     this.completedTasks.push(completed[0])
     const savedCompletes = JSON.stringify(this.completedTasks)
     localStorage.setItem("completes", savedCompletes)
+    const savedTasks = JSON.stringify(this.Tasks)
+    localStorage.setItem("tasks", savedTasks)
   }
 }
 
