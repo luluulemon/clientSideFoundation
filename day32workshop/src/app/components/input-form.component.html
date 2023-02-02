@@ -18,11 +18,11 @@
         </tr>
         <tr>
             <td>Due Date:</td>
-            <td><input type="date" formControlName="dueDate" [min]="todayDate"></td>
+            <td><input type="date" formControlName="dueDate" [min]="todayDate" (change)="checkDate()"></td>
         </tr>
         <tr>
             <td></td>
-            <td><button type="submit" [disabled]="form.invalid">ADD</button></td>
+            <td><button type="submit" [disabled]="form.invalid || !validDate">ADD</button></td>
         </tr>
     </table>
 

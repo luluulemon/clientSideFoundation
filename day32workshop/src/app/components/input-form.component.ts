@@ -15,6 +15,7 @@ export class InputFormComponent implements OnInit {
 
   form!: FormGroup
   todayDate: Date = new Date()
+  validDate: boolean = false
 
   constructor(private fb: FormBuilder){}
 
@@ -26,7 +27,7 @@ export class InputFormComponent implements OnInit {
     return this.fb.group( {
       description: this.fb.control<string>('', [Validators.required, Validators.minLength(5)]),
       priority: this.fb.control<string>('', [Validators.required]),
-      dueDate: this.fb.control<Date>(new Date, [Validators.required])
+      dueDate: this.fb.control<string>("", [Validators.required])
     } )
   }
 
@@ -34,5 +35,15 @@ export class InputFormComponent implements OnInit {
     const task = this.form.value
     console.info(task)
     this.onAddTask.next(task)
+  }
+
+  checkDate(){
+    const today = this.todayDate.setDate(this.todayDate.getDate()-1)
+    const selected = Date.parse(this.form.value['dueDate'])
+
+    this.validDate = selected > today 
+    console.info("check date input", this.form.value["dueDate"])
+    console.info("check today Date", today)
+    console.info("check validDate", this.validDate)
   }
 }
