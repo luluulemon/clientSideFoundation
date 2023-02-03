@@ -14,13 +14,11 @@
         <tr>
             <td>Priority</td>
             <td>
-                
-                    <mat-radio-group formControlName="priority" aria-label="Select priority">
-                    <mat-radio-button  name="priority" value="low">low</mat-radio-button>
-                    <mat-radio-button  name="priority"  value="medium">medium</mat-radio-button>
-                    <mat-radio-button  name="priority"  value="high">high</mat-radio-button>
-                    </mat-radio-group>
-                
+                <mat-radio-group formControlName="priority" aria-label="Select priority">
+                <mat-radio-button  name="priority" value="low">low</mat-radio-button>
+                <mat-radio-button  name="priority"  value="medium">medium</mat-radio-button>
+                <mat-radio-button  name="priority"  value="high">high</mat-radio-button>
+                </mat-radio-group>
             </td>
         </tr>
         <tr>
@@ -39,7 +37,7 @@
         </tr>
         <tr>
             <td></td>
-            <td><button type="submit" [disabled]="form.invalid || !validDate">ADD</button></td>
+            <!-- <td><button type="submit" [disabled]="form.invalid || !validDate">ADD</button></td> -->
             <td><button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">ADD</button></td>
         </tr>
     </table>

@@ -1,5 +1,5 @@
 import { Component, Input, Output } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Subject } from 'rxjs';
 import { Task } from '../model';
 
@@ -24,11 +24,11 @@ export class ToDoListComponent {
   @Output() onSaveEdit = new Subject<Task>()
   @Output() onCompleteTask = new Subject<number>()
 
-  private createForm(): FormGroup {
+  private createForm(task:Task): FormGroup {
     return this.fb.group( {
-      description: this.fb.control<string>(''),
-      priority: this.fb.control<string>(''),
-      dueDate: this.fb.control<Date>(new Date)
+      description: this.fb.control<string>(task.description, [Validators.required]),
+      priority: this.fb.control<string>(task.priority, [Validators.required]),
+      dueDate: this.fb.control<Date>(task.dueDate, [Validators.required])
     })
   }
 
@@ -41,7 +41,7 @@ export class ToDoListComponent {
   editTask(i: number){
     console.info("to edit this: ", i)
     this.onEdit.next(i)
-    this.form = this.createForm()
+    this.form = this.createForm(this.TasksList[i])
   }
 
   cancelEdit(i:number){ this.onCancelEdit.next(i) }

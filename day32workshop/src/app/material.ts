@@ -8,10 +8,11 @@ import { MatNativeDateModule } from '@angular/material/core'
 import { MatButtonModule } from '@angular/material/button'
 import {MatRadioModule} from '@angular/material/radio'
 import {MatCard, MatCardModule} from '@angular/material/card'
+import {MatListModule} from '@angular/material/list'
 
 const matModules: any[] = [ MatToolbarModule, MatFormFieldModule, MatInputModule,
                              MatIconModule, MatDatepickerModule, MatNativeDateModule, 
-                             MatRadioModule, MatButtonModule, MatCardModule]
+                             MatRadioModule, MatButtonModule, MatCardModule, MatListModule]
 @NgModule({ imports: matModules, exports: matModules})
     
 export class MaterialModule { } 

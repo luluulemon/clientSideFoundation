@@ -35,6 +35,7 @@ export class InputFormComponent implements OnInit {
     const task = this.form.value
     console.info(task)
     this.onAddTask.next(task)
+    this.form = this.createForm()
   }
 
   checkDate(){

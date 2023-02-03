@@ -1,28 +1,35 @@
-<h1 style="color: orange;">ToDo</h1>
-<br>
-<div class="mainPage">
-  <app-input-form (onAddTask)="addTask($event)"></app-input-form>
-  <br>
-  <app-to-do-list [TasksList]="Tasks" [editIndex]="edits" 
-                  (onDeleteTask)="deleteTask($event)"
-                  (onEdit)="editTask($event)"
-                  (onCancelEdit)="cancelEdit($event)"
-                  (onSaveEdit)="saveEdit($event)"
-                  (onCompleteTask)="completeTask($event)"></app-to-do-list>
+<mat-card class="mainPage">
+  <mat-toolbar><h1 style="color: orange;">ToDo App</h1></mat-toolbar>
 
   <br>
-
-  <div style="border: solid black 1px">
-    <h2 style="color: orange;">Completed Tasks</h2>
+  
+    <app-input-form (onAddTask)="addTask($event)" style="margin:5px"></app-input-form>
     <br>
-    <div *ngIf="completedTasks.length == 0">
-      <h3>No tasks completed</h3>
-    </div>
+    <app-to-do-list [TasksList]="Tasks" [editIndex]="edits" 
+                    (onDeleteTask)="deleteTask($event)"
+                    (onEdit)="editTask($event)"
+                    (onCancelEdit)="cancelEdit($event)"
+                    (onSaveEdit)="saveEdit($event)"
+                    (onCompleteTask)="completeTask($event)"
+                    style="margin:5px"></app-to-do-list>
+    <br>
 
-    <div *ngIf="completedTasks.length >0">
-      <div *ngFor="let task of completedTasks" >
-        <span> {{task.description}}, {{ task.priority }}, {{ task.dueDate}} </span>
+  <mat-card style="margin:5px">
+    <mat-card-header>
+      <mat-card-title style="color: orange;">Completed Tasks</mat-card-title>
+    </mat-card-header>
+    <br>
+    <mat-card-content>
+      <div *ngIf="completedTasks.length == 0">
+        <h3>No tasks completed</h3>
       </div>
-    </div>
-  </div>
-</div>
+
+      <div *ngIf="completedTasks.length >0">
+        <mat-list role="list" *ngFor="let task of completedTasks">
+          <mat-list-item role="list-item"> {{task.description}}, {{ task.priority }}, {{ task.dueDate}} </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card-content>
+  </mat-card>
+  
+</mat-card>
