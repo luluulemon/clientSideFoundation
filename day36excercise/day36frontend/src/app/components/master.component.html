@@ -1,0 +1,11 @@
+<button type="button" (click)="nextPage()">Next Page</button>
+&nbsp;
+<button type="button" *ngIf="offset>0" (click)="previousPage()">Previous Page</button>
+
+<div *ngFor="let game of games" class="game" [routerLink]="['game', game.gid]">
+    <h3>    Name: {{ game.name }} 
+        <br>
+        Game Id: {{ game.gid }}
+    </h3>
+
+</div>

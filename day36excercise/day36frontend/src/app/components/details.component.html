@@ -1,0 +1,17 @@
+
+<div *ngIf="game!=null" class="game">
+    <h2>{{ game.name }} </h2>
+    <img src="{{ game.image_url }}" width="75" alt="">
+    <br>
+    <h4>
+        <span>Year: {{ game.year }}</span>  
+        <br>
+        <span>Ranking: {{ game.ranking }}</span>
+        <br>
+        <span>Users_rated: {{game.users_rated}} </span>
+    </h4>
+
+    <div><a href="{{ game.url }}">{{game.url}}</a></div>
+    <br>
+    <button type="button" [routerLink]="['/']">BACK</button>
+</div>
