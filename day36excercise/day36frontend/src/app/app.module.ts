@@ -13,7 +13,6 @@ const appRoutes: Routes = [
   { path: "", component: MasterComponent },
   { path: 'game/:gameId', component: DetailsComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full'},
-  //{}, 
 ]
 
 
@@ -27,7 +26,7 @@ const appRoutes: Routes = [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes, { useHash : true })
   ],
   providers: [GameService],
   bootstrap: [AppComponent]

@@ -1,0 +1,11 @@
+
+.uploadChild{
+    border: solid 2px lightsalmon;
+    padding: 10px;
+    border-radius: 10px;
+    width: 500px;
+}
+
+.photo{
+    width: 500px;
+}

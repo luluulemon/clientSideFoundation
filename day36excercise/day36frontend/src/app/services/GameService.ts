@@ -12,7 +12,7 @@ export class GameService{
         const params: HttpParams = new HttpParams()
             .set("limit", limit)
             .set("offset", offset)
-
+        
         return firstValueFrom( this.http.get<gameSummary[]>('api/games', { params: params } ) )
     }
 
