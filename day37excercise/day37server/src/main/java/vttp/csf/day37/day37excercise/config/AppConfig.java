@@ -3,6 +3,7 @@ package vttp.csf.day37.day37excercise.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import com.amazonaws.auth.AWSStaticCredentialsProvider;
 import com.amazonaws.auth.BasicAWSCredentials;
@@ -10,6 +11,7 @@ import com.amazonaws.client.builder.AwsClientBuilder.EndpointConfiguration;
 import com.amazonaws.services.s3.AmazonS3;
 import com.amazonaws.services.s3.AmazonS3ClientBuilder;
 
+@Configuration
 public class AppConfig {
     
     @Value("${ACCESS_KEY}")
@@ -20,7 +22,7 @@ public class AppConfig {
     
     
     // @Bean
-    // public AmazonS3 getS3Client() {
+    // public AmazonS3 getS3Client()mvn c {
     //     // create credential
     //     System.out.println(secretKey);
 

@@ -28,7 +28,8 @@ public class FileUploadController {
 
         model.addAttribute("name", name);
         model.addAttribute("file", myfile);
-        model.addAttribute("key", "myobjects/%s".formatted(key));
+        System.out.println(key);
+        model.addAttribute("key", "myobject/%s".formatted(key));
 
         return "upload";
     }

@@ -1,0 +1,39 @@
+<h2>Add Contact</h2>
+
+<div>
+    <form [formGroup]="form">
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td><input type="text" name="name" formControlName="name"></td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td><input type="email" name="email" formControlName="email"></td>
+            </tr>
+            <tr>
+                <td><button type="button" (click)="syncContacts()">SYNC</button></td>
+                <td><button type="button" (click)="addContact()">SAVE</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div>
+    <ul>
+        <li *ngFor="let c of contactsList">
+            {{c.name}}: {{ c.email }}
+        </li>
+    </ul>
+</div>
+
+<div>
+    <div><button type="button" (click)="fetchAll()">SHOW ALL</button></div>
+    
+    <h3 *ngIf="DBList.length > 0">Full DB List</h3>
+    <ul>
+        <li *ngFor="let c of DBList">
+            {{c.name}}: {{ c.email }}
+        </li>
+    </ul>
+</div>

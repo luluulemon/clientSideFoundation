@@ -40,7 +40,7 @@ public class S3Service {
         String key = UUID.randomUUID().toString().substring(0,8);
 
         // Create a put request
-        PutObjectRequest putReq = new PutObjectRequest("<bucketName>", 
+        PutObjectRequest putReq = new PutObjectRequest("lufirstbucket", 
                                             "myobject/%s".formatted(key), 
                                             file.getInputStream(), metadata);
 
