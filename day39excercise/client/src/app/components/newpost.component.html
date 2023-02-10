@@ -1,0 +1,27 @@
+
+<div>
+    <form [formGroup]="form" action="">
+        <table>
+            <tr>
+                <td>Image:</td>
+                <td><input type="file" accept="image/*" formControlName="picture" #file></td>
+            </tr>
+            <tr>
+                <td>Title:</td>
+                <td><input type="text" name="title" formControlName="title"></td>
+            </tr>
+            <tr>
+                <td>Text:</td>
+                <td><textarea name="text" formControlName="text" cols="30" rows="10"></textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button type="button" (click)="addPost()">POST</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+
+<div *ngIf="imageString">
+    <img [src]="imageString" alt="">
+</div>
