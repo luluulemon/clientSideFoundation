@@ -12,6 +12,7 @@ export class SavePostService {
 
   savePic(text: formText): Promise<ObjIDString>{
     return firstValueFrom(this.http.post<ObjIDString>("http://localhost:8080/newPostText", text))
-
   }
+
+
 }

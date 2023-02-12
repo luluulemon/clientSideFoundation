@@ -13,4 +13,13 @@ import { firstValueFrom } from 'rxjs';
     RetrievePic(): Promise<formText[]>{
       return firstValueFrom(this.http.get<formText[]>("http://localhost:8080/getPosts"))
     }
+
+    addLikes(id: string): Promise<formText[]>{
+      return firstValueFrom(this.http.get<formText[]>(`http://localhost:8080/likes/${id}`))
+    }
+
+    addDislikes(id: string): Promise<formText[]>{
+      console.info('calling the addDislikes Repo')
+      return firstValueFrom(this.http.get<formText[]>(`http://localhost:8080/dislikes/${id}`))
+    }
   }

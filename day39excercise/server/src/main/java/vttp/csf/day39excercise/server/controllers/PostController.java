@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestPart;
@@ -41,7 +42,7 @@ public class PostController {
         return ResponseEntity.ok(allPosts.toString());
     }
 
-
+    // for sending the Post Text, image sent in another endPoint
     @PostMapping(path="/newPostText", consumes=MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     @CrossOrigin(origins="*")
@@ -58,7 +59,7 @@ public class PostController {
     }
 
 
-
+    // for sending the image
     @PostMapping(path="/newPost", consumes=MediaType.MULTIPART_FORM_DATA_VALUE )
     @ResponseBody
     @CrossOrigin(origins="*")
@@ -81,5 +82,24 @@ public class PostController {
 
 
         return ResponseEntity.ok("test picture");
+    }
+
+
+    @GetMapping("/likes/{id}")
+    @CrossOrigin(origins="*")
+    public ResponseEntity<String> addLikes(@PathVariable String id){
+        
+        txtRepoSvc.addLike(id);
+        JsonArray allPosts = txtRepoSvc.getTexts();
+        return ResponseEntity.ok(allPosts.toString());
+    }
+
+    @GetMapping("/dislikes/{id}")
+    @CrossOrigin(origins="*")
+    public ResponseEntity<String> addDislikes(@PathVariable String id){
+        
+        txtRepoSvc.addDisLike(id);
+        JsonArray allPosts = txtRepoSvc.getTexts();
+        return ResponseEntity.ok(allPosts.toString());
     }
 }

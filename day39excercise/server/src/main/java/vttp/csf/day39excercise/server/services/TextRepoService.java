@@ -39,8 +39,13 @@ public class TextRepoService {
         JsonObject text = Json.createObjectBuilder().add("title", textJson.getString("title"))
                         .add("text", textJson.getString("text"))
                         .add("id", objID)
+                        .add("likes", 0)
+                        .add("dislikes", 0)
                         .build();
         
         return txtRepo.saveText(text);        
     }
+
+    public void addLike(String id){ txtRepo.addLike(id);    }
+    public void addDisLike(String id){ txtRepo.addDislike(id);    }
 }

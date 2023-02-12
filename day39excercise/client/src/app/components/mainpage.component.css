@@ -1,0 +1,11 @@
+.post{
+    border: 2px solid lightskyblue;
+    border-radius: 5px;
+    padding: 10px;
+    align-items: center;
+    
+}
+
+.image{
+    width: 200px;
+}

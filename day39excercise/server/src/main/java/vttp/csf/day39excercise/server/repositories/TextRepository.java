@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
+//import org.springframework.data.mongodb.repository.Update;
 import org.springframework.stereotype.Repository;
 
 import jakarta.json.Json;
@@ -52,7 +54,7 @@ public class TextRepository {
                                     .add("IDs", idBuilder.build());
 
             Document LogToInsert = Document.parse(IDJson.build().toString());
-            mongoTemplate.insert(LogToInsert, "postText");
+            mongoTemplate.insert(LogToInsert, "postTextLog");
         }
         else{
             JsonObjectBuilder idBuilder = Json.createObjectBuilder()
@@ -62,5 +64,19 @@ public class TextRepository {
             Document LogToInsert = Document.parse(idBuilder.build().toString());
             mongoTemplate.insert(LogToInsert, "postTextLog");
         }
+    }
+
+
+    public void addLike(String id){
+        Query query = Query.query(Criteria.where("id" ).is(id ));
+        Update updateOps = new Update().inc("likes", 1);
+
+        mongoTemplate.updateMulti(query, updateOps, Document.class, "postText");
+    }
+
+    public void addDislike(String id){
+        Query query = Query.query(Criteria.where("id" ).is(id ));
+        Update updateOps = new Update().inc("dislikes", 1);
+        mongoTemplate.updateMulti(query, updateOps, Document.class, "postText");
     }
 }

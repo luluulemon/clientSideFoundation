@@ -10,6 +10,9 @@ export interface formText{
     title: string
     text: string
     id: string
-
+    likes: number
+    dislikes: number
 }
+
+
 

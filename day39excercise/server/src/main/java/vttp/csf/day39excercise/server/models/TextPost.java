@@ -27,7 +27,9 @@ public class TextPost {
         if(!doc.getString("id").equals("log")){
                                 post.add("id", doc.getString("id"))
                                     .add("title", doc.getString("title"))
-                                    .add("text", doc.getString("text"));
+                                    .add("text", doc.getString("text"))
+                                    .add("likes", doc.getInteger("likes", 0))
+                                    .add("dislikes", doc.getInteger("dislikes", 0));
                                 }
         return post.build();
     }

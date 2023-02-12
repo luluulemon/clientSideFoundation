@@ -1,18 +1,6 @@
-<app-newpost></app-newpost>
 
-<div *ngFor="let text of allTexts" class="post">
-  
-  <img src="{{ createUrl(text.id) }}" alt="">
 
-   <h4> 
-    ID: {{ text. id }}  <br>
-    Title: {{ text.title}} <br>
-    Caption: {{ text.text }} <br>
-  </h4>
-  <div>
-    <button type="button">LIKE</button>
-    &nbsp;
-    <button type="button">DIS-LIKE</button>
-  </div>
-</div>
+<router-outlet></router-outlet>
+
+
 

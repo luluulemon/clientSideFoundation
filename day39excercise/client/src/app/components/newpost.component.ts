@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 import { formText, imageKey, ObjIDString } from '../model';
 import { SavePostService } from '../services/save-post.service';
@@ -18,10 +19,11 @@ export class NewpostComponent {
 
   imageString: string = ''
   objID: string = ''
-  textData: formText = { title:"", text:"", id:""}
+  textData: formText = { title:"", text:"", id:"", likes:0, dislikes:0}
   newID: ObjIDString = { id: "" }
 
-  constructor(private fb:FormBuilder, private http:HttpClient, private saveSvc:SavePostService){}
+  constructor(private fb:FormBuilder, private http:HttpClient, 
+        private saveSvc:SavePostService, private router:Router){}
 
   ngOnInit():void { this.form = this.createForm() }
 
@@ -58,6 +60,7 @@ export class NewpostComponent {
                 })
                 .catch((error) => { console.info(error)})
                 
+    this.router.navigate([''])
 
     // firstValueFrom(this.http.post("http://localhost:8080/newPostText", this.textData))
     //           .then((v) => {  this.newID = v as ObjIDString
