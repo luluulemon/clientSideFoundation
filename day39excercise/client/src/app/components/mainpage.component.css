@@ -1,11 +1,27 @@
 .post{
-    border: 2px solid lightskyblue;
     border-radius: 5px;
-    padding: 10px;
-    align-items: center;
-    
+    width: 250px;
 }
 
 .image{
     width: 200px;
+    border-radius: 10px;
+}
+
+.newPostButton{
+    padding: 10px;
+    background-color: lightskyblue;
+}
+
+.newPostButton:hover{
+    background-color: aqua;
+}
+
+.buttonContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.mainPage{
+    width: 280px;
 }

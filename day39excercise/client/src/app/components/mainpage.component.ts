@@ -17,13 +17,10 @@ export class MainpageComponent {
 
 
   ngOnInit(): void {
-    console.info('OnInit')
+    console.info('Does this fire off: OnInit')
     this.retrieveSvc.RetrievePic()
-                .then(v => {this.allTexts = v 
-                  // need to take in post metrics
-                  console.info(this.allTexts)
-                })
-                .catch(error => console.info('error: ', error))    
+                .then(v => {this.allTexts = v })
+                .catch(error => console.info('error: ', error))   
   }
 
   createUrl(id:string): String{ return "https://lufirstbucket.sgp1.digitaloceanspaces.com/myobjects/".concat(id)   }

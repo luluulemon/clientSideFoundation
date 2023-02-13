@@ -1,16 +1,26 @@
-<button type="button" [routerLink]="['addPost']">NEW POST</button>
-<br><br>
-<div *ngFor="let text of allTexts, let idx=index" class="post" >
+
+
+<div class="mainPage">
+    <h2>**Caption It**</h2>
+    <hr><hr>
+
+    <div class="buttonContainer">    
+        <button type="button" [routerLink]="['addPost']" class="newPostButton">NEW POST</button>
+    </div>
+    <hr>
+    <div *ngFor="let text of allTexts, let idx=index" class="post" >
     
-    <h3>Title: {{ text.title}} </h3>
-    <img src="{{ createUrl(text.id) }}" alt="" class="image">
-  
-     <h4> 
-      Caption: {{ text.text }} <br>
-    </h4>
-    <div>
-      <button type="button" (click)="like( text.id )">LIKE</button><span>{{ text.likes }}</span>
-      &nbsp;
-      <button type="button" (click)="dislike(text.id)">DIS-LIKE</button><span>{{ text.dislikes }}</span>
+        <h3>Title: {{ text.title}} </h3>
+        <img src="{{ createUrl(text.id) }}" alt="" class="image">
+    
+        <h4> 
+        Caption: {{ text.text }} <br>
+        </h4>
+        <div>
+        <button type="button" (click)="like( text.id )">LIKE</button><span>{{ text.likes }}</span>
+        &nbsp;
+        <button type="button" (click)="dislike(text.id)">DIS-LIKE</button><span>{{ text.dislikes }}</span>
+        </div>
+        <hr>
     </div>
 </div>
