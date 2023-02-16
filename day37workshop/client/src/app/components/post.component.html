@@ -1,0 +1,20 @@
+<h2>Post Upload</h2>
+
+<form [formGroup]="form">
+
+    <span>File Upload:
+        <input type="file" accept="image/*" #uploadFile>
+    </span> 
+    <br><br>
+    <span>Comments: 
+        <textarea name="" id="" cols="30" rows="10" formControlName="comments"></textarea>
+    </span>
+
+    <br><br>
+    <button type="button" (click)="uploadPost()">UPLOAD</button>
+</form>
+
+<br>
+<div *ngIf="postResponse">
+    <span>Upload Complete! Post id is {{postResponse}}. </span>
+</div>

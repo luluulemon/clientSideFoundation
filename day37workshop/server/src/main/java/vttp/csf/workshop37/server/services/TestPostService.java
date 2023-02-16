@@ -15,10 +15,16 @@ public class TestPostService {
     @Autowired
     private TestPostRepository testRepo;
 
-    public void savePost(String comments, InputStream image){
+    public String savePost(String comments, InputStream image){
         
         String postId = UUID.randomUUID().toString().substring(0, 8);
-        testRepo.savePost(postId, comments, image);
+        int result = testRepo.savePost(postId, comments, image);
+
+        if(result > 0)
+        {   return postId;  }
+        else
+        {   return "NA";    }
+
     }
 
 }

@@ -14,7 +14,9 @@ public class TestPostRepository {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
-    public void savePost(String postId, String comments, InputStream image){
-        jdbcTemplate.update(SQL_INSERT_TEST_POST, postId, comments, image );
+    public int savePost(String postId, String comments, InputStream image){
+        int result = jdbcTemplate.update(SQL_INSERT_TEST_POST, postId, comments, image );
+
+        return result;
     }
 }
