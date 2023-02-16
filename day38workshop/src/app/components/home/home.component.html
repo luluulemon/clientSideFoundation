@@ -1,0 +1,22 @@
+
+<div style="width:350px">
+    <form [formGroup]="form">
+        <div>
+            City: <input type="text" formControlName="city"> &nbsp;
+            <button type="button" (click)="addCity()">ADD</button>
+        </div>
+    </form>
+    <br>
+    
+    <div style="border: 2px solid black; margin:10px; padding: 10px">
+        <div *ngFor="let city of allCities, let idx=index" >
+            <div [routerLink]="['weather', city.city, 69]" class="city">
+                <div style="display:flex; justify-content:space-between;">
+                <span >{{ city.city }} </span> 
+                <span class="deleteCity" (click)="deleteCity(idx)"> X </span>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>

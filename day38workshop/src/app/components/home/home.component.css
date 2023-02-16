@@ -1,0 +1,10 @@
+.deleteCity:hover{
+    background-color: lightgray;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.city:hover{
+    background-color: bisque;
+    cursor: pointer;
+}

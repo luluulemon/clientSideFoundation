@@ -1,0 +1,39 @@
+<div *ngIf="model">
+    
+    <div style="display:flex; justify-content: space-between; width: 350px">
+        <h2> {{ model.city }} </h2>
+        <button type="button" [routerLink]="['']">BACK</button>
+    </div>
+
+    <div style="border: 2px solid lightslategray; margin-top:10px; width: 350px">
+        <table>
+            <tr>
+                <td>Temperature: </td>
+                <td> {{ model.temp | number}} </td>
+            </tr>
+            <tr>
+                <td>Description:</td>
+                <td> {{ model.description }} </td>
+            </tr>
+            <tr>
+                <td>Humidity: </td>
+                <td> {{ model.humidity }} </td>
+            </tr>
+            <tr>
+                <td>Wind Speed</td>
+                <td> {{ model.windSpeed }}</td>
+            </tr>
+            <tr>
+                <td>Max Temp:</td>
+                <td> {{ model.maxTemp | number }} </td>
+            </tr>
+            <tr>
+                <td>Min Temp:</td>
+                <td> {{ model.minTemp | number }} </td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
