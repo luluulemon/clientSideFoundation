@@ -10,7 +10,10 @@ import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisClientConfiguration;
 import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import vttp.csf.workshop39.server.models.Hero;
 
 @Configuration
 public class RedisConfig {
@@ -22,9 +25,9 @@ public class RedisConfig {
     //@Value("${spring.redis.password}") 
     private String redisPassword = System.getenv("REDIS_PASSWORD");
 
-    @Bean
+    @Bean("marvel-cache")
     @Scope ("singleton")
-    public RedisTemplate<String, Object> createRedisTemplate()   {
+    public RedisTemplate<String, Hero> createRedisTemplate()   {
     final RedisStandaloneConfiguration config = new RedisStandaloneConfiguration(); 
         config.setPort(redisPort.get());
         config.setHostName(redisHost);      
@@ -32,10 +35,13 @@ public class RedisConfig {
     final JedisClientConfiguration jedisClient = JedisClientConfiguration.builder().build();
     final JedisConnectionFactory jedisFac = new JedisConnectionFactory(config, jedisClient);
     jedisFac.afterPropertiesSet();
-    final RedisTemplate<String, Object> template = new RedisTemplate<>();
+    final RedisTemplate<String, Hero> template = new RedisTemplate<>();
         template.setConnectionFactory(jedisFac);
         template.setKeySerializer(new StringRedisSerializer());
-        template.setValueSerializer(new StringRedisSerializer());
+        Jackson2JsonRedisSerializer<Hero> jackson2JsonJsonSerializer = new Jackson2JsonRedisSerializer<Hero>(Hero.class); 
+        template.setValueSerializer(jackson2JsonJsonSerializer); 
+
+        //template.setValueSerializer(new StringRedisSerializer());
     return template; }
 
 }

@@ -1,0 +1,10 @@
+.spread{
+    display:flex;
+    justify-content: space-between;
+}
+
+.commentsBox{
+    border: 1px solid black;
+    padding: 5px;
+    
+}

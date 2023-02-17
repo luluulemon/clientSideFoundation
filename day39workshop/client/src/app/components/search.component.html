@@ -1,0 +1,12 @@
+<h2>Get Heroes</h2>
+
+<div>
+    <form [formGroup]="form">
+        <table>
+            <tr>
+                <td><input type="text" placeholder="search heroes" formControlName="charSearch"></td>
+                <td><button type="button" (click)="searchCharacter()">SEARCH</button></td>
+            </tr>
+        </table>
+    </form>
+</div>

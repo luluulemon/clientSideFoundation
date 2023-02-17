@@ -1,0 +1,6 @@
+<h2>Results</h2>
+<button type="button" [routerLink]="['']">BACK</button>
+
+<div *ngFor="let hero of Heroes" class="heroList" (click)="getHero( hero.id )">
+    <h4> {{hero.name}} </h4>
+</div>

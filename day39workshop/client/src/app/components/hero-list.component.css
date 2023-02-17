@@ -1,0 +1,8 @@
+.heroList{
+    border: solid 1px black;
+
+}
+
+.heroList:hover{
+    background-color: aliceblue;
+}

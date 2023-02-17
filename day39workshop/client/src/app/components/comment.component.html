@@ -1,0 +1,10 @@
+<h1 *ngIf="heroName">Comment - {{ heroName }}</h1>
+
+<form [formGroup]="form">
+    <textarea formControlName="comments"  cols="30" rows="10"></textarea>
+    <div>
+        <button type="button" [routerLink]="['/hero', heroId ]">CANCEL</button>
+        &nbsp;
+        <button type="button" (click)="postComment()">POST</button>
+    </div>
+</form>
