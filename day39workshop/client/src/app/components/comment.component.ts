@@ -14,6 +14,7 @@ export class CommentComponent {
   form!: FormGroup
   heroId!: number
   heroName!: string
+  searchChar: string = ''
 
   constructor(private fb:FormBuilder, private commentSvc: PostCommentService,
     private activatedRoute:ActivatedRoute, private router:Router){}
@@ -22,6 +23,7 @@ export class CommentComponent {
     this.createForm()
     this.heroId = this.activatedRoute.snapshot.params['id']
     this.heroName = this.activatedRoute.snapshot.params['name']
+    this.searchChar = this.activatedRoute.snapshot.params['searchChar']
   }
 
   createForm(){
@@ -37,6 +39,6 @@ export class CommentComponent {
   
     console.info('Check comment obj: ', comment)
     this.commentSvc.postComment(comment)
-    this.router.navigate(['/hero', this.heroId])
+    this.router.navigate(['/hero', this.heroId, this.searchChar])
   }
 }

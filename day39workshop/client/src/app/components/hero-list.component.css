@@ -6,3 +6,8 @@
 .heroList:hover{
     background-color: aliceblue;
 }
+
+.spread{
+    display: flex;
+    justify-content: space-between;
+}

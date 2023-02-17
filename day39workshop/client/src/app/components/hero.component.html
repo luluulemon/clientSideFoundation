@@ -4,13 +4,16 @@
 <div *ngIf="hero" style="width: 400px; margin-top: 10px">
     
     <img src="{{ hero.image }}" alt="" style="max-width: 100%;">
-    <h1 class="spread"> <span>{{hero.name}}</span> 
+    <h2 class="spread"> <span>{{hero.name}}</span> 
         <button type="button" (click)="addComment(hero)">COMMENT</button> 
-    </h1>
-    <h3 *ngIf="hero.description">Description: {{ hero.description }}</h3>
-    <h3 *ngIf="!hero.description"> Description: NA </h3>
+    </h2>
+    <h4 *ngIf="hero.description">Description: {{ hero.description }}</h4>
+    <h4 *ngIf="!hero.description"> Description: NA </h4>
+
+
+    <div *ngFor="let c of commentsList" class="commentsBox">
+        Comments: {{ c.comments}}
+    </div>
 </div>
 
-<div *ngFor="let c of commentsList" class="commentsBox">
-    Comments: {{ c.comments}}
-</div>
+

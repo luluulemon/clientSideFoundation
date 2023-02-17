@@ -17,7 +17,8 @@ const appRoutes: Routes = [
   { path: 'list/:search', component: HeroListComponent },
   { path: '', component: SearchComponent},
   { path: 'hero/:id/:searchChar', component: HeroComponent },
-  { path: 'comments/:id/:name', component: CommentComponent }
+  { path: 'hero/:id', component: HeroComponent },
+  { path: 'comments/:id/:name/:searchChar', component: CommentComponent }
 ]
 
 @NgModule({

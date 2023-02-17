@@ -39,6 +39,6 @@ export class HeroComponent {
 
   addComment(hero:Hero){
     console.info('Check hero obj in hero component: ', hero)
-    this.router.navigate(['/comments', hero.id, hero.name])
+    this.router.navigate(['/comments', hero.id, hero.name, this.searchChar])
   }
 }
