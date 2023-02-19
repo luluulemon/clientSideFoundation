@@ -1,0 +1,47 @@
+<p>confirmation works!</p>
+
+<div>
+    <div *ngIf="sellerItem">
+        <img src="{{ sellerItem.image }}" alt="">
+    </div>
+    <div *ngIf="sellerItem">
+        <table>
+            <tr>
+                <td>Post Id:</td>
+                <td>{{imageId}}</td>
+            </tr>
+            <tr>
+                <td>Post Date:</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>Name:</td>
+                <td>{{sellerItem.name}}</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>{{ sellerItem.email}} </td>
+            </tr>
+            <tr>
+                <td>phone:</td>
+                <td>{{ sellerItem.phone}} </td>
+            </tr>
+            <tr>
+                <td>Title:</td>
+                <td>{{ sellerItem.title}} </td>
+            </tr>
+            <tr>
+                <td>Description/td>
+                <td>{{ sellerItem.description}} </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>
+                    <button type="button">CANCEL</button>
+                    <button type="button">CONFIRM</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+  
