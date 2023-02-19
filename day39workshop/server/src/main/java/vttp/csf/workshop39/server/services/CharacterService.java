@@ -25,7 +25,7 @@ import java.util.List;
 public class CharacterService {
 
     private String pubKey = "84ee7cb636cbb0ff6d8b0dc5ef171d0d";
-    private String priKey = "1dcacd3f4fe7e8172f029c55356bf3a554800c6e";
+    private String priKey = System.getenv("MARVEL_PRIKEY");   
 
     @Autowired
     private CharacterRepository charRepo;
