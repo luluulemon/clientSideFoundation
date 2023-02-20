@@ -1,38 +1,41 @@
-<div>
-    <form [formGroup]="form">
-        <table>
-            <tr>
-                <td>Name:</td>
-                <td><input type="text" formControlName="name"></td>
-            </tr>
-            <tr>
-                <td>Email:</td>
-                <td><input type="email" formControlName="email"></td>
-            </tr>
-            <tr>
-                <td>Phone:</td>
-                <td><input type="number" step="1" formControlName="phone"></td>
-            </tr>
-            <tr>
-                <td>Title:</td>
-                <td><input type="text" formControlName="title"></td>
-            </tr>
-            <tr>
-                <td>Description:</td>
-                <td><textarea  cols="30" rows="10" formControlName="description"></textarea></td>
-            </tr>
-            <tr>
-                <td>Image:</td>
-                <td><input type="file" accept="image/*" #uploadFile formControlName="image"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td>
-                    <button type="button" (click)="createForm()">CLEAR</button>
-                    &nbsp;
-                    <button type="button" (click)="postItem()" [disabled]="form.invalid">POST</button>
-                </td>
-            </tr>
-        </table>
-    </form>
+<div style="border: 1px solid black; padding: 10px; width: 400px">
+    <h2>List Item</h2>
+    <div>
+        <form [formGroup]="form">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" formControlName="name"></td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td><input type="email" formControlName="email"></td>
+                </tr>
+                <tr>
+                    <td>Phone:</td>
+                    <td><input type="number" step="1" formControlName="phone"></td>
+                </tr>
+                <tr>
+                    <td>Title:</td>
+                    <td><input type="text" formControlName="title"></td>
+                </tr>
+                <tr>
+                    <td>Description:</td>
+                    <td><textarea  cols="30" rows="10" formControlName="description"></textarea></td>
+                </tr>
+                <tr>
+                    <td>Image:</td>
+                    <td><input type="file" accept="image/*" #uploadFile formControlName="image"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <button type="button" (click)="createForm()">CLEAR</button>
+                        &nbsp;
+                        <button type="button" (click)="postItem()" [disabled]="form.invalid">POST</button>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
 </div>

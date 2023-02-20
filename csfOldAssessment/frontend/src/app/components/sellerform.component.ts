@@ -37,7 +37,7 @@ export class SellerformComponent {
 
   postItem(){
     this.sellingItem = this.form.value
-    console.info('check post: ', this.sellingItem)
+    //console.info('check post: ', this.sellingItem)
 
     const formData = new FormData()
     //formData.set('name', this.form.value.image)
@@ -48,16 +48,20 @@ export class SellerformComponent {
     formData.set('description', this.form.value.description)
     formData.set('name', this.form.value.name)
 
-
-
     this.postSvc.postImage(formData)
                 .then(v => {   
-                  console.info('check post: ', v)
-                  const JSONstring = JSON.stringify(this.sellingItem)
-                  localStorage.setItem("item", JSONstring)})
-                .catch(error => console.error('error: ', error))
+                  console.info('check post: ', v) 
+                  this.postSvc.item = v as SellerPost
+
+                  // const JSONstring = JSON.stringify(v)
+                  // localStorage.setItem("item", JSONstring)
+                  // const itemString = localStorage.getItem("item")
+
+                  this.router.navigate(['/confirmation'])
+                })
+                 .catch(error => console.error('error: ', error))
     
-    this.router.navigate(['/confirmation'])
+    
 
   }
 

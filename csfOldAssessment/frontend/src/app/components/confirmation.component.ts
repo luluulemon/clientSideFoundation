@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SellerPost } from '../model';
+import { PostItemService } from '../services/post-item.service';
 
 @Component({
   selector: 'app-confirmation',
@@ -10,20 +11,37 @@ import { SellerPost } from '../model';
 })
 export class ConfirmationComponent {
 
-  constructor(private activatedRoute:ActivatedRoute, private http:HttpClient){}
+  constructor(private activatedRoute:ActivatedRoute, 
+            private postSvc:PostItemService, private router: Router){}
 
   sellerItem!:SellerPost | null
   image!:FormData
   imageId: string = ''
 
   ngOnInit(){
-    const itemString = localStorage.getItem("item")
-    if(itemString)
-    { this.sellerItem = JSON.parse(itemString)  }
+    
+    this.sellerItem = this.postSvc.item
+    console.info('Check sellerItem: ', this.sellerItem)
 
-    //this.imageId = this.activatedRoute.snapshot.params['imageId']
+    // const itemString = localStorage.getItem("item")
+    // if(itemString)
+    // { 
+    //   this.sellerItem = JSON.parse(itemString)  
+    //   console.info('Check confirmation: ', this.sellerItem)}
 
-    console.info('post: ', this.sellerItem)
-    console.info('post: ', this.imageId)
+  }
+
+  confirmPost(id:string){
+    this.postSvc.confirm(id)
+              .then(v => 
+                      { console.info(v)
+                        this.router.navigate(['postid', this.sellerItem?.id])
+                      }
+                    )
+              .catch(error =>{
+                  alert("Did not manage to save!")
+                  console.error('error: ', error)})
+
+    
   }
 }

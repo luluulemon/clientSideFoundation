@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-post-id',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class PostIDComponent {
 
+  constructor(private activatedRoute: ActivatedRoute){}
+
+  id: string = ''
+
+  ngOnInit(){
+    this.id = this.activatedRoute.snapshot.params['Id']
+  }
 }

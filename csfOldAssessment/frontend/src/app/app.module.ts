@@ -14,9 +14,9 @@ import { HttpClientModule } from '@angular/common/http'
 const appRoutes:Routes = [ 
   { path: '', component: SellerformComponent },
   { path: 'confirmation/:imageId', component: ConfirmationComponent }, 
-  { path: 'confirmation/', component: ConfirmationComponent },
+  { path: 'confirmation', component: ConfirmationComponent },
   { path: 'postid', component: PostIDComponent },
-  { path: 'postid/:number/:number2', component: PostIDComponent },
+  { path: 'postid/:Id', component: PostIDComponent },
   { path: '**', redirectTo: '/', pathMatch: 'full' }
 ]
 

@@ -40,8 +40,13 @@ public class ItemPost {
     public String getImage() {        return image;    }
     public void setImage(String image) {        this.image = image;    }
 
+    @Override
+    public String toString() {
+        return "Id:%s, name is %s".formatted(id, name);
+    }
+
     public static ItemPost create
-    (String name, String email, String title, String description, String id, Integer phone){
+    (String name, String email, String title, String description, String id, String phone){
 
         ItemPost itemPost = new ItemPost();
         itemPost.setId(id);
@@ -50,21 +55,21 @@ public class ItemPost {
         itemPost.setTitle(title);
         itemPost.setDescription(description);
         itemPost.setEmail(email);
-        itemPost.setImage("https://lufirstbucket.sgp1.digitaloceanspaces.com/carousell" + id);
+        itemPost.setImage("https://lufirstbucket.sgp1.digitaloceanspaces.com/carousell/" + id);
         if(phone == null){  itemPost.setPhone(0);}
-        else{   itemPost.setPhone(phone);   }
+        else{   itemPost.setPhone(Integer.parseInt(phone));   }
         return itemPost;
     }
 
-    public JsonObject toJson(ItemPost post){
-        return  Json.createObjectBuilder().add(name, post.getName())
+    public JsonObject toJson(){
+        return  Json.createObjectBuilder().add("name", name)
                                         .add("id", id)
-                                        .add("Date", date.toString())
+                                        .add("date", date.toString())
                                         .add("email", email)
                                         .add("phone", phone)
                                         .add("title", title)
                                         .add("description", description)
-                                        .add("imageURL", image)
+                                        .add("image", image)
                                         .build();
     }
 
