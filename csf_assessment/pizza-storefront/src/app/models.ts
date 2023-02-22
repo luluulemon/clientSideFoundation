@@ -7,5 +7,11 @@ export interface Order{
     sauce: string
     toppings: string[]
     comments: string
+}
 
+export interface OrderSummary{
+    order_id: number
+    name: string
+    email: string
+    amount: number
 }

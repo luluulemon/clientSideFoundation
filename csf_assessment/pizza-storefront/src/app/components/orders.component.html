@@ -1,1 +1,15 @@
-<p>orders works!</p>
+<div style="width:500px">
+    <div *ngIf="orderSums" >
+        <h3> Orders for {{orderSums[0].name}}: {{orderSums[0].email}} </h3>
+        <div *ngFor="let sum of orderSums" 
+        style="border: 1px solid lightblue; border-radius: 10px; padding:10px; margin-top: 5px;">
+            <span> Order id: {{ sum.orderId }} </span>
+            <br>
+            <span> Total amount: ${{ sum.amount | number }} </span>
+        </div>
+    </div>
+
+    <br>
+<button type="button" [routerLink]="['']" style="float: right">BACK TO ORDERING</button>
+    
+</div>

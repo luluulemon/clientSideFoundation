@@ -15,7 +15,7 @@
         <td>
           <input type="email" size="50" id="email" placeholder="Your LumiNUS email" formControlName="email">
           <button type="button" class="ml-10px" (click)="getOrders()" 
-            [disabled]="form.get('email')?.hasError('required') || form.get('email')?.hasError('email')">
+            [disabled]="form.get('email')?.invalid">
             List Orders
           </button>
         </td>
@@ -76,10 +76,11 @@
         <td></td>
         <td>
           <div class="justify-right">
-            <button type="submit" [disabled]="form.invalid">Place Order</button>
+            <button type="submit" [disabled]="form.invalid || noToppings()">Place Order</button>
           </div>
         </td>
       </tr>
     </table>
   </form>
 </div>
+

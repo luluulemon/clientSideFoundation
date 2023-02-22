@@ -8,16 +8,19 @@ import { OrdersComponent } from './components/orders.component';
 
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'
+import { PizzaService } from './pizza.service';
+import { TestComponent } from './components/test.component';
 
 const appRoutes: Routes = [ 
   { path: '', component: MainComponent },
   { path: 'orders/:email', component: OrdersComponent },
-  { path: '**', redirectTo: '/', pathMatch: 'full'},
+  { path: 'orders', component:OrdersComponent },
+  { path: '**', redirectTo: '/', pathMatch: 'full'}
 ]
 
 @NgModule({
   declarations: [
-    AppComponent, MainComponent, OrdersComponent
+    AppComponent, MainComponent, OrdersComponent, TestComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,7 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
 
-  providers: [ ],
+  providers: [ PizzaService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

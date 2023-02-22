@@ -26,6 +26,7 @@ public class OrderService {
 	public void createOrder(Order order) {
 		order.setOrderId( orderRepo.getID());
 		orderRepo.saveOrder(order);
+		System.out.println("Order created");
 	}
 
 	// GET /api/order/<email>/all
@@ -42,15 +43,16 @@ public class OrderService {
 			for(String top: rs.getString("toppings").split(","))
 			{	toppingPrice += priceSvc.topping(top); }	// topping Price
 			
+			int thickC = ( rs.getBoolean("thick_crust") ) ? 0 : 1 ;	// 1 if boolean=true
 			float totalPrice = priceSvc.size( rs.getInt("pizza_size") ) +  // size price
 								priceSvc.sauce( rs.getString("sauce"))	+	// sauce price
-								priceSvc.thickCrust()*rs.getInt("thick_crust") + // crust price
-								priceSvc.thinCrust()*(1-rs.getInt("thick_crust")) +
+								priceSvc.thickCrust()*thickC + // crust price
+								priceSvc.thinCrust()*thickC +
 								toppingPrice;
 
 			sums.add( OrderSummary.create(rs, totalPrice) );
 		}
-
+		System.out.println("Size of sums is : " + sums.size());
 		return sums;
 	}
 }

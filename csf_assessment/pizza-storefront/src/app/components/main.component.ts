@@ -3,7 +3,8 @@ import { Component, ComponentFactoryResolver, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { lastValueFrom } from 'rxjs';
-import { Order } from '../models';
+import { Order, OrderSummary } from '../models';
+import { PizzaService } from '../pizza.service';
 
 const SIZES: string[] = [
   "Personal - 6 inches",
@@ -28,7 +29,8 @@ export class MainComponent implements OnInit {
   form!:FormGroup
   newOrder!: Order
 
-  constructor(private fb:FormBuilder, private http: HttpClient, private router:Router) {}
+  constructor(private fb:FormBuilder, private http: HttpClient, 
+            private router:Router, private pizzaSvc: PizzaService) {}
 
   ngOnInit(): void {
     this.createForm()
@@ -41,8 +43,8 @@ export class MainComponent implements OnInit {
   createForm(){
     this.form = this.fb.group({
       name: this.fb.control<string>('', Validators.required),
-      email: this.fb.control<string>('', Validators.required),
-      pizzaSize: this.fb.control<string>('', Validators.required),
+      email: this.fb.control<string>('', [Validators.required, Validators.email]),
+      pizzaSize: this.fb.control<number>(0, Validators.required),
       base: this.fb.control<string>('', Validators.required),
       sauce: this.fb.control<string>('', Validators.required),
       toppings: this.fb.array([false, false, false, false, false, false, false], Validators.required),
@@ -60,17 +62,15 @@ export class MainComponent implements OnInit {
     this.newOrder.toppings = chosenToppings
     console.info('Check order output: ', this.newOrder)
 
-    lastValueFrom( this.http.post('api/order', this.newOrder) )
-                .then( v =>
-                  lastValueFrom( this.http.get(`api/order/${this.newOrder.email}/all`))
-                      .then( v => { this.router.navigate(['orders'])  })
-                      .catch(error => console.error('error in get orders: ', error))
-                   )
-                .catch(error => console.error('error: ', error))
+    this.pizzaSvc.createOrder(this.newOrder)
   }
 
   getOrders(){
+    this.pizzaSvc.getOrders(this.form.value.email)
+  }
 
+  noToppings(): boolean{    // For Validity of form, true if there are no toppings
+    return this.form.value.toppings.filter( (x:Boolean) => x==true).length==0
   }
 
 }

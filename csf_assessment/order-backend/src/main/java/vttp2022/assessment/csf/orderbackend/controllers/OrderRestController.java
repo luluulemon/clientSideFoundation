@@ -4,6 +4,7 @@ import java.io.StringReader;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,6 +44,13 @@ public class OrderRestController {
     @ResponseBody
     public ResponseEntity<String> getOrders(@PathVariable String email){
         List<OrderSummary> sums = orderSvc.getOrdersByEmail(email);
+        if(sums.size()==0)
+        {   return ResponseEntity.status(HttpStatus.NOT_FOUND)
+            .body( Json.createObjectBuilder()
+            .add("message", "No Orders yet!")
+            .build().toString() );
+        }
+
         JsonArrayBuilder sumsArray = Json.createArrayBuilder();
         sums.stream().forEach(sum -> sumsArray.add(sum.toJson()));
 

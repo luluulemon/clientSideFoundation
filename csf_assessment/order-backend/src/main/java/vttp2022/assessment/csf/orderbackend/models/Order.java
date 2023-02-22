@@ -2,7 +2,6 @@ package vttp2022.assessment.csf.orderbackend.models;
 
 import java.util.LinkedList;
 import java.util.List;
-import java.util.UUID;
 
 import jakarta.json.JsonObject;
 
