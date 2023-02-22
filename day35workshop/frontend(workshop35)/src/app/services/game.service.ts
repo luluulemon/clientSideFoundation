@@ -20,7 +20,7 @@ export class GameService {
     .set('Access-Control-Allow-Origin', '*');
 
     //return this.httpClient.get<Game[]>(this.URL, { params: params, headers:headers })
-    return this.httpClient.get<Game[]>(this.URL_public, { params: params,  })
+    return this.httpClient.get<Game[]>(this.URL, { params: params,  })
   }
 
 }

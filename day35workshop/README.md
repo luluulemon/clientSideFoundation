@@ -2,6 +2,7 @@ Day 35
 - add on endpoint for angular
     1. /games-ng, with optional query params
         List games with name and GID
+    - allow cross-origin using @CrossOrigin(origins="*") notation for endpoint
     **run server, then run front end (frontend folder) -> ng serve
 
 
