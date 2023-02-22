@@ -4,6 +4,8 @@ Day 35
         List games with name and GID
     - allow cross-origin using @CrossOrigin(origins="*") notation for endpoint
     **run server, then run front end (frontend folder) -> ng serve
+    
+<img width="452" alt="Screenshot_20230222_030801" src="https://user-images.githubusercontent.com/86675075/220550129-4eee772a-adc1-4486-965a-262eac6b8337.png">
 
 
 Day 26
